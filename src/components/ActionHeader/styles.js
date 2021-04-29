@@ -20,12 +20,13 @@ const styles = StyleSheet.create({
   titleStyle: {
     flex: 1,
     marginLeft: platform.fiveScale,
-    textAlign: 'left',
     justifyContent: 'center',
     alignItems: 'center',
     fontWeight: 'normal',
     fontSize: platform.titleFontSize,
     color: platform.inverseTextColor,
+    alignSelf: 'center',
+    textAlign: 'center',
   },
   bold: {
     fontWeight: 'bold',

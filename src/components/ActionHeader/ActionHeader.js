@@ -8,10 +8,12 @@ import {
   Body,
   Right,
   Title,
+  Text,
 } from 'native-base';
 import { PropTypes } from 'prop-types';
 
 import styles from './styles';
+import platform from '../../../native-base-theme/variables/platform';
 
 class ActionHeader extends React.PureComponent {
   renderLeft = () => {
@@ -31,7 +33,7 @@ class ActionHeader extends React.PureComponent {
           {leftAction && (
             <Button
               onPress={leftAction}
-              style={{ backgroundColor: 'lightblue' }}
+              style={{ backgroundColor: platform.brandPrimary }}
             >
               <Icon
                 name={leftIcon}
@@ -42,6 +44,9 @@ class ActionHeader extends React.PureComponent {
                   customleftIconStyle,
                 ]}
               />
+              <Text>
+                Back
+              </Text>
             </Button>
           )}
         </Left>

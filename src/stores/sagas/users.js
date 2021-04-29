@@ -13,7 +13,7 @@ function* getUserData({ payload: { userName, callback } }) {
     yield put(usersActions.loadingUserData(true));
     const data = yield call(getCashFlowDataApi, userName);
     yield put(usersActions.setUserInfo(data));
-    yield call(callback);
+    if (callback) yield call(callback);
   } catch (error) {
     yield call(printError, 'Error. Try again later');
     yield put(usersActions.setUserInfo(null));

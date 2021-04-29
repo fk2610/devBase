@@ -12,14 +12,12 @@ import { NavigationActions } from 'react-navigation';
 import ActionHeader from '../../components/ActionHeader';
 import ContentLoader from '../../components/ContentLoader';
 import UserDataItem from '../../components/UserDataItem';
-import { onAppReady } from '../../stores/actions';
 import { getUserInfo } from '../../stores/actions/users';
 
 import platform from '../../../native-base-theme/variables/platform';
 
 const mapDispatchToProps = (dispatch) => ({
-  onAppReadyAction: () => dispatch(onAppReady()),
-  getFullData: () => dispatch(getUserInfo()),
+  getFullData: (userName) => dispatch(getUserInfo(userName)),
 });
 
 const mapStateToProps = (state) => {
@@ -70,11 +68,6 @@ class PersonContainer extends React.PureComponent {
       userData,
       isLoadingUserData,
     } = this.props;
-    const {
-      name,
-      avatar_url: avatar,
-      location,
-    } = userData;
     return (
       <Container>
         <ActionHeader
@@ -86,9 +79,9 @@ class PersonContainer extends React.PureComponent {
             ? this.renderContentLoader()
             : (
               <UserDataItem
-                name={name}
-                avatar={avatar}
-                location={location}
+                name={userData.name}
+                avatar={userData.avatar_url}
+                location={userData.location}
               />
             )}
         </Content>
@@ -98,14 +91,13 @@ class PersonContainer extends React.PureComponent {
 }
 
 PersonContainer.propTypes = {
-  onAppReadyAction: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     name: PropTypes.string,
     avatar_url: PropTypes.string,
     location: PropTypes.string,
   }),
   getFullData: PropTypes.func.isRequired,
-  isLoadingCashFlow: PropTypes.bool.isRequired,
+  isLoadingUserData: PropTypes.bool.isRequired,
 };
 
 PersonContainer.defaultProps = {

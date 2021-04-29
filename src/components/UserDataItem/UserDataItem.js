@@ -9,20 +9,21 @@ import {
 import PropTypes from 'prop-types';
 
 import styles from './styles';
+import platform from '../../../native-base-theme/variables/platform';
 
 class UserDataItem extends React.PureComponent {
   render() {
     const { name, avatar, location } = this.props;
     return (
-      <Item>
-        <Left>
+      <Item style={{ marginLeft: platform.twentyScale, paddingVertical: platform.twentyScale }}>
+        <Left style={{ flex: 0 }}>
           <Thumbnail source={{ uri: avatar }} />
         </Left>
-        <Body success style={styles.badge}>
+        <Body success style={{ flex: 1, paddingLeft: platform.tenScale }}>
           <Text style={styles.earnRate}>
             {name}
           </Text>
-          <Text style={styles.earnRate}>
+          <Text note style={{ alignSelf: 'flex-start' }}>
             {location}
           </Text>
         </Body>

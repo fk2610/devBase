@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   earnRate: {
     fontWeight: 'bold',
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
   },
   iconArrow: {
     color: platform.inverseTextColor,
